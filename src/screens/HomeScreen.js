@@ -193,23 +193,26 @@ export default function HomeScreen() {
 
   const renderCategories = () => (
     <View style={styles.categoriesContainer}>
-      <TouchableOpacity style={styles.categoryButton}>
-        <Icon name="globe-outline" size={32} color="#000" />
-        <Text style={styles.categoryText}>Global</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryButton}>
-        <Icon name="location-outline" size={32} color="#000" />
-        <Text style={styles.categoryText}>Local</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryButton}>
-        <Icon name="chatbubbles-outline" size={32} color="#000" />
-        <Text style={styles.categoryText}>Publicaciones</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryButton}>
-        <Icon name="megaphone-outline" size={32} color="#000" />
-        <Text style={styles.categoryText}>Anuncios</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={styles.categoryButton}>
+      <Icon name="globe-outline" size={32} color="#000" />
+      <Text style={styles.categoryText}>Global</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.categoryButton}>
+      <Icon name="location-outline" size={32} color="#000" />
+      <Text style={styles.categoryText}>Local</Text>
+    </TouchableOpacity>
+    <TouchableOpacity 
+      style={styles.categoryButton}
+      onPress={handleNavigateToPublications}
+    >
+      <Icon name="chatbubbles-outline" size={32} color="#000" />
+      <Text style={styles.categoryText}>Publicaciones</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.categoryButton}>
+      <Icon name="megaphone-outline" size={32} color="#000" />
+      <Text style={styles.categoryText}>Anuncios</Text>
+    </TouchableOpacity>
+  </View>
   );
 
   const renderPopularTopics = () => (
@@ -249,33 +252,9 @@ export default function HomeScreen() {
     </View>
   );
 
-  const renderBottomNav = () => (
-    <View style={styles.bottomNav}>
-      <TouchableOpacity style={styles.navItem}>
-        <Icon name="home-outline" size={24} color="#000" />
-        <Text style={styles.navText}>Inicio</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
-        <Icon name="create-outline" size={24} color="#000" />
-        <Text style={styles.navText}>Crear</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.navItemCenter}>
-        <Image
-          source={require('../../assets/nav-icon.png')}
-          style={styles.centerLogo}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
-        <Icon name="settings-outline" size={24} color="#000" />
-        <Text style={styles.navText}>Ajustes</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.navItem}>
-        <Icon name="person-outline" size={24} color="#000" />
-        <Text style={styles.navText}>Perfil</Text>
-      </TouchableOpacity>
-    </View>
-  );
-
+  const handleNavigateToPublications = () => {
+    navigation.navigate('Publications');
+  };
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
@@ -284,7 +263,7 @@ export default function HomeScreen() {
         {renderCategories()}
         {renderPopularTopics()}
       </ScrollView>
-      {renderBottomNav()}
+ 
       {renderUserMenu()}
       {renderHamburgerMenu()}
     </SafeAreaView>
